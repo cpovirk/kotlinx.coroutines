@@ -10,6 +10,7 @@ val kotlinDevUrl = project.rootProject.properties["kotlin_repo_url"] as? String
 
 repositories {
     mavenCentral()
+    mavenLocal()
     if (cacheRedirectorEnabled) {
         maven("https://cache-redirector.jetbrains.com/plugins.gradle.org/m2")
     } else {
@@ -56,7 +57,7 @@ dependencies {
         exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib")
     }
     // Force ASM version, otherwise the one from animalsniffer wins (which is too low for BCV)
-    implementation("org.ow2.asm:asm:9.7")
+    implementation("org.ow2.asm:asm:9.8-SNAPSHOT")
     implementation("ru.vyarus:gradle-animalsniffer-plugin:${version("animalsniffer")}") // Android API check
     implementation("org.jetbrains.kotlinx:kover-gradle-plugin:${version("kover")}") {
         exclude(group = "org.jetbrains.kotlin", module = "kotlin-stdlib-jdk8")
