@@ -306,3 +306,9 @@ artifacts {
 tasks.named("dokkaHtmlPartial") {
     dependsOn(jvmJar)
 }
+
+tasks.withType<Test>().configureEach {
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(24))
+    })
+}
